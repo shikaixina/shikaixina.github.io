@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>王大猪头</title>
+<meta content="" name="Keywords">
+<meta content="" name="Description">
+<meta name="format-detection" content="telephone=no">
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+//<script src="https://unpkg.com/vue@next"></script>
+<style>
+  body {
+      margin: 0px;
+      padding: 0px;
+      background: #00000052;
+  }
+  .father{
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+  }
+  .top{
+      width: 100%;
+  }
+  .top ul{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+  }
+  .top li{
+      width: 25vw;
+      float: left;
+      text-align: center;
+      font-weight: bold;
+      padding: 2vw 0;
+      box-sizing: border-box;
+      border: 1px solid #000;
+  }
+</style>
+</head>
+<body>
+  <div class="father">
+    <div class="top">
+        <ul>
+            <li onclick="go(1)">首页</li>
+            <li onclick="go(2)">相册</li>
+            <li onclick="go(3)">视频</li>
+            <li onclick="go(4)">日记</li>
+        </ul>
+    </div>
+    <div class="center">
+      <div id="mediaplayer"></div> 
+    </div>
+    <div class="bottom">
+
+    </div>
+</div>
+
+<script src="jwplayer/jwplayer.js"></script>
+<script type = "text/javascript">
+  jwplayer('mediaplayer').setup({
+      'flashplayer': 'jwplayer/jwplayer.flash.swf',
+    'image': '01.jpg',
+      'id': 'playerID',
+      'width': '100%',
+    'aspectratio':'16:9',
+      'file': '03.mp4'
+    });
+    function go(id){
+      switch (id) {
+          case 1:
+              window.location.href="index.html"
+              break;
+          case 2:
+              window.location.href="3d立体相册(3)/disanyemian.html"
+              break;
+          case 3:
+              window.location.href="formynana.html"
+              break;
+          case 4:
+              window.location.href="riji.html"
+              break;
+          default:
+              break;
+      }
+    }
+</script>
+<!-- <script type = "text/javascript">
+  const { createApp,ref,components} = Vue
+  //const beforeVerification = ref(true)
+  //const afterVerification = ref(false)
+  const beforeVerification = ref(false)
+  const afterVerification = ref(true)
+  const year = ref('')
+  const name = ref('')
+  const go = id=>{
+      switch (id) {
+          case 1:
+              window.location.href="index.html"
+              break;
+          case 2:
+              window.location.href="3d立体相册(3)/disanyemian.html"
+              break;
+          case 3:
+              window.location.href="formynana.html"
+              break;
+          case 4:
+              window.location.href="riji.html"
+              break;
+          default:
+              break;
+      }
+  }
+  const app = {
+      setup() {
+          return {
+              go,
+              name,
+              year,
+              beforeVerification,
+              afterVerification
+          }
+      }
+  }
+  createApp(app).mount('#app')
+</script> -->
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+<html>
+   <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>王大猪头</title>
+        <!-- 
+        <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+        
+        <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+        <script src="https://unpkg.com/vue@next"></script>
+   </head>
+   <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            background: #00000052;
+        }
+        .login{
+            width: 75vw;
+            height: 65vw;
+            border: 1px solid #000;
+            border-radius: 10px;
+            background-color: #000;
+            padding: 0 auto;
+            box-sizing: border-box;
+            position: fixed;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        .form{
+            width: 100%;
+            height: 100%;
+            padding-left: 8vw;
+        }
+        .form div{
+            margin-bottom: 10vw;
+            position: relative;
+            top: 10vw;
+        }
+        .input input {
+            border: 0px;
+            border-bottom: 2px solid white;
+            background-color: rgba(255, 255, 255, 0);
+            color: white;
+            outline: none;
+        }
+        .inputBotton input {
+            width: 40vw;
+            border: 0px;
+            border-radius: 10px;
+            margin-left: 7vw;
+            background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+        }
+        .left{
+            width: 7vw;
+            color: white;
+            margin-right: 4vw;
+            position:relative;
+            top: 5px;
+        }
+        .father{
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+        }
+        .top{
+            width: 100%;
+        }
+        .top ul{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+        }
+        .top li{
+            width: 25vw;
+            float: left;
+            text-align: center;
+            font-weight: bold;
+            padding: 2vw 0;
+            box-sizing: border-box;
+            border: 1px solid #000;
+        }
+    </style>
+    <body>
+        <div id = "app">
+            <div class="father" v-if="afterVerification">
+                <div class="top">
+                    <ul>
+                        <li @click="go(1)">首页</li>
+                        <li @click="go(2)">相册</li>
+                        <li @click="go(3)">视频</li>
+                        <li @click="go(4)">日记</li>
+                    </ul>
+                </div>
+                <div class="center">
+
+                </div>
+                <div class="bottom">
+
+                </div>
+            </div>
+            <div class="login" v-if="beforeVerification">
+                <div class="form">
+                    <div class="inputText input">
+                        <img src="img/user.png" class="left" alt="" />
+                        <input type="text" v-model="name" placeholder="姓名" required />
+                      </div>
+                      <div class="inputPwd input">
+                        <img src="img/lock.png" class="left" alt="" />
+                        <input type="password" v-model="year" placeholder="生日" required />
+                      </div>
+                      <div class="inputBotton">
+                        <input type="submit" @click="login()" value="验    证" />
+                      </div>
+                </div>
+            </div>
+        </div>
+      <script type = "text/javascript">
+            const { createApp, reactive, toRefs ,ref,components} = Vue
+            const state = reactive({
+                numCount:0,
+                form:{
+                    num1:'',
+                    num2:'',
+                }
+            })
+            //const beforeVerification = ref(true)
+            //const afterVerification = ref(false)
+            const beforeVerification = ref(false)
+            const afterVerification = ref(true)
+            const year = ref('')
+            const name = ref('')
+            const login = () => {
+                console.log("123",name,year)
+                if(name.value=='王思雨'||name.value=='李开新'){
+                    if(name.value=='王思雨'){
+                        if(year.value=='19990504'){
+                            year.value=''
+                            name.value=''
+                            beforeVerification.value = false
+                            afterVerification.value = true
+                        }else{
+                            alert('请输入正确生日，格式如19990101')
+                        }          
+                    }
+                    if(name.value=='李开新'){
+                        if(year.value=='19990711'){
+                            year.value=''
+                            name.value=''
+                            beforeVerification.value = false
+                            afterVerification.value = true
+                        }else{
+                            alert('请输入正确生日，格式如19990101')
+                        }          
+                    }
+                }else{
+                    alert('请输入正确姓名')
+                }
+          }
+            const go = id=>{
+                switch (id) {
+                    case 1:
+                        window.location.href="index.html"
+                        break;
+                    case 2:
+                        window.location.href="3d立体相册(3)/disanyemian.html"
+                        break;
+                    case 3:
+                        window.location.href="formynana.html"
+                        break;
+                    case 4:
+                        window.location.href="riji.html"
+                        break;
+                    default:
+                        break;
+                }
+            }
+            const app = {
+                setup() {
+                    return {
+                        ...toRefs(state),
+                        login,
+                        go,
+                        name,
+                        year,
+                        beforeVerification,
+                        afterVerification
+                    }
+                }
+            }   
+            createApp(app).mount('#app')
+        </script>
+    </body>
+</html>
